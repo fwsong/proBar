@@ -1,0 +1,46 @@
+body {
+	font-family:"MicroSoft YaHei",SimSun,sans-serif;
+	font-size:12px;
+	text-align:left;
+	line-height:1.5;
+	color:#000;
+	position:relative;
+}
+.index_nav{
+	width:85%;
+	min-width:1024px;
+	margin:0 auto;
+	height:70px;
+	line-height: 70px;
+	border-top:#fff solid 1px;
+	border-bottom:#fff solid 1px;
+}
+.index_topic{
+	width:980px;
+	height:120px;
+	margin:30px auto;
+	overflow:hidden;
+	text-indent: -99em;
+	background:transparent url(../images/index/topic.png) no-repeat center;
+}
+.index_nav ul{
+	width:980px;
+	height:100%;
+	margin:0 auto;
+	text-align:center;
+	font-size:0;
+}
+.index_nav li{
+	display:inline-block;
+	padding:0 24px;
+	font-size:14px;
+	color:#ebcccc;
+}
+.index_nav li a{
+	color:#ebcccc;
+	text-decoration:none;
+}
+.index_nav li a:hover{
+	color:#f3e448;
+	text-decoration:none;
+}

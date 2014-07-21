@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="dataSource"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>java:/comp/env/MySqlDatasourceForMyOwn</value>
+		</property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<!-- don't modify the property -->
+				<!-- <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.cache.provider_class">
+					org.hibernate.cache.OSCacheProvider
+				</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.cache.use_second_level_cache">
+					false
+				</prop>
+				<!-- <prop key="hibernate.connection.release_mode">after_transaction</prop> -->
+			</props>
+		</property>
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath:/com/fsong/migration/pojo</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="transactionAttributesSource"
+		class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource">
+		<property name="properties">
+			<props>
+				<prop key="realtime*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+				<prop key="get*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ,readOnly
+				</prop>
+				<prop key="find*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ,readOnly
+				</prop>
+				<prop key="is*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ,readOnly
+				</prop>
+				<prop key="has*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ,readOnly
+				</prop>
+				<prop key="had*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ,readOnly
+				</prop>
+				<prop key="load*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ,readOnly
+				</prop>
+				<prop key="create*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+				<prop key="update*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+				<prop key="save*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+				<prop key="submit*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+				<prop key="delete*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+				<prop key="remove*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+				<prop key="begin*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+				<prop key="lock*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+				<prop key="finish*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+				<prop key="execute*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+				<prop key="batchSave*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+				<prop key="increase*">
+					PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager">
+			<ref bean="transactionManager" />
+		</property>
+		<property name="transactionAttributeSource">
+			<ref bean="transactionAttributesSource" />
+		</property>
+	</bean>
+	<!--  -->
+	<bean id="autoTxProxyCreator"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+			<list>
+				<idref local="transactionInterceptor" />
+			</list>
+		</property>
+		<property name="beanNames">
+			<list>
+				<value>*Dao</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	<!--================Data Access Layer=====================-->
+</beans>

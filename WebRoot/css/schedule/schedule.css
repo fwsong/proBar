@@ -1,0 +1,27 @@
+.group_sub_nav{
+	margin-top:32px;
+}
+.group_sub_nav ul{
+	width:980px;
+	margin:0 auto;
+	text-align:center;
+	font-size:0;
+}
+.group_sub_nav_ad .group_sub_nav_adli{
+	border:0;
+}
+.group_sub_nav li{
+	display:inline-block;
+	width:123px;
+	height:34px;
+	line-height:34px;
+	margin-left:-1px;
+	border:#fff solid 1px;
+	color:#ebcccc;
+	font-size:12px;
+	overflow:hidden;
+}
+.group_sub_nav li a{
+	color:#ebcccc;
+	text-decoration:none;
+}

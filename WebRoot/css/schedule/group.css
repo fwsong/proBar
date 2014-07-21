@@ -1,0 +1,141 @@
+body{
+	color: #000;
+	text-align: left;
+	font-family: "MicroSoft YaHei",SimSun,sans-serif;
+	font-size: 12px;
+	line-height: 1.5;
+}
+.sect{
+	width:980px;
+	margin:30px auto 0;
+}
+.col_lm{
+	width:640px;
+	float:left;
+}
+.mod_sch_group{
+	margin-top:20px;
+}
+.wc_sch{
+	padding-left:8px;
+	position:relative;
+}
+.wctable_sch_title{
+	position: absolute;
+	left: 0;
+	top: -5px;
+	z-index: 2;
+	width: 13%;
+	height: 60px;
+	line-height: 60px;
+	color: #fff;
+	text-align: center;
+	background-color: #ce3e4e;
+}
+.sch_red{
+}
+.wctable_sch_title h2{
+	font-weight:normal;
+	font-size:inherit;
+	font-family:"MicroSoft YaHei",SimSun,sans-serif;
+}
+h2{
+	display:block;
+	margin:0;
+	padding:0;
+	-webkit-margin-before: 0.83em;
+	-webkit-margin-after: 0.83em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	font-weight: normal;
+	font-size: inherit;
+}
+.wctable_sch_title h2 em{
+	margin-right:4px;
+	vertical-align:middle;
+	font-size:32px;
+	font-weight:bold;
+	font-family:Arial;
+	font-style:normal;
+}
+table{
+	display:table;
+	border-collapse:separate;
+	border-spacing:2px;;
+	border-color:gray;
+}
+.wctable{
+	width:100%;
+	border-collapse:collapse;
+}
+colgroup{
+	display:table-column-group;
+}
+thead{
+	display:table-header-group;
+	vertical-align:middle;
+	border-color:inherit;
+}
+tr{
+	display:table-row;
+	vertical-align:inherit;
+	border-color:inherit;
+}
+.wctable th{
+	font-weight:normal;
+	text-align: center;
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+	white-space: nowrap;
+}
+.wctable_sch th{
+	height:50px;
+	background-color:#131e25;
+	color:#e0e0e0;
+}
+tbody {
+	display: table-row-group;
+	vertical-align: middle;
+	border-color: inherit;
+}
+tr{
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+td{
+	display:table-cell;
+	vertical-align:inherit;
+}
+.wctable td{
+	text-align:center;
+	vertical-align:middle;
+	padding:0;
+	margin:0;
+	white-space:nowrap;
+}
+.wctable_sch td_block{
+	width:8px;
+	background:0;
+	border-top-color:transparent;
+}
+.wctable_sch .tr01 td{
+	height:48px;
+}
+.sch_red .wctable_sch .tb_block{
+	background:0;
+}
+.sch_red .wctable_sch td{
+	background-color:#e4d8c2;
+}
+.wctable_sch td{
+	height:40px;
+	background-color:#e4d8c2;
+	border-top:#c9c3b9 solid 1px;
+}
+.wctable_sch .tb_col1{
+	width:10%;
+	text-align:center;
+	border-right:#c9c3b9 solid 1px;
+}

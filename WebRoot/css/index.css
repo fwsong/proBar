@@ -1,0 +1,8 @@
+.main_body{
+	width:1500px;
+	height:500px;
+	margin:30px auto;
+	overflow:hidden;
+	text-indent: -99em;
+	background:transparent url(../images/index/deguoduoguan.jpg) no-repeat center;
+}
